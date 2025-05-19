@@ -1,0 +1,26 @@
+{
+  "name": "developer-portfolio",
+  "version": "1.0.0",
+  "description": "Modern developer portfolio with Three.js and sci-fi aesthetic",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "portfolio",
+    "threejs",
+    "webgl",
+    "gsap"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "three": "^0.175.0",
+    "gsap": "^3.13.0"
+  }
+}
