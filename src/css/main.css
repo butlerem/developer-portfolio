@@ -1,0 +1,209 @@
+/* CSS Custom Properties - Color Palette */
+:root {
+  /* Base Colors */
+  --bg-color: #12100f;
+  --text-primary: #f3ede9;
+  --text-secondary: #c2b8b2;
+
+  /* Accent Colors */
+  --accent-primary: #ff4e42;
+  --accent-secondary: #c2362f;
+  --accent-tertiary: #ffb3ab;
+
+  /* UI Elements */
+  --panel-bg: rgba(30, 26, 24, 0.7);
+  --panel-border: rgba(255, 78, 66, 0.3);
+  --panel-highlight: rgba(255, 78, 66, 0.1);
+
+  /* Grid & Background */
+  --grid-color: rgba(255, 240, 230, 0.05);
+
+  /* Status Colors */
+  --status-critical: #ff00a0;
+  --status-warning: #ffae00;
+  --status-normal: #ff4e42;
+}
+
+/* Reset & Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "TheGoodMonolith", monospace;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  background-color: var(--bg-color);
+  height: 100vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* Space Background */
+#space-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("https://assets.codepen.io/7558/space-bg-002.jpg");
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  opacity: 0.8;
+}
+
+/* Grid Overlay */
+#grid-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Three.js Container */
+#three-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+#three-container canvas {
+  display: block;
+}
+
+/* Floating Particles Container */
+#particles-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  width: 1.5px;
+  height: 1.5px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Main Content */
+main {
+  position: relative;
+  z-index: 2;
+}
+
+/* Sections */
+section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 2rem;
+  position: relative;
+}
+
+#hero {
+  padding-top: 0;
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--accent-primary);
+}
+
+/* Buttons */
+button {
+  cursor: pointer;
+  font-family: inherit;
+  text-transform: uppercase;
+  border: none;
+  background: none;
+}
+
+/* Inputs */
+input,
+textarea {
+  font-family: inherit;
+  text-transform: inherit;
+}
+
+/* Utility Classes */
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Notification Toast */
+#notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  padding: 0.625rem 1.25rem;
+  border-radius: 5px;
+  font-size: 0.75rem;
+  color: var(--accent-primary);
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 100;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+}
+
+#notification.show {
+  opacity: 1;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-secondary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-primary);
+}
