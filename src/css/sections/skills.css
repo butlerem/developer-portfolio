@@ -1,0 +1,30 @@
+/* Skills Section */
+#skills {
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-right: 4rem;
+}
+
+.skills-panel {
+  width: 450px;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Responsive Skills */
+@media (max-width: 768px) {
+  #skills {
+    padding-right: 2rem;
+    justify-content: center;
+  }
+
+  .skills-panel {
+    position: relative;
+    right: 0;
+    top: 0;
+    transform: none;
+    width: 100%;
+    max-width: 450px;
+  }
+}

@@ -1,0 +1,141 @@
+/* Fixed Header Navigation */
+#main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 2rem;
+  background: rgba(18, 16, 15, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--panel-border);
+  z-index: 100;
+  transition: all 0.3s ease;
+}
+
+.header-left,
+.header-center,
+.header-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.header-left {
+  justify-content: flex-start;
+}
+
+.header-center {
+  justify-content: center;
+  gap: 2rem;
+}
+
+.header-right {
+  justify-content: flex-end;
+}
+
+/* Logo */
+.logo {
+  font-size: 0.875rem;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+/* Navigation Links */
+.nav-link {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  transition: all 0.2s ease;
+  padding: 0.5rem 0;
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: var(--accent-primary);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--accent-primary);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active {
+  color: var(--accent-primary);
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Timestamp */
+#timestamp {
+  color: var(--accent-primary);
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+}
+
+.header-right span {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+}
+
+/* Mobile Menu Toggle (for future responsiveness) */
+.mobile-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.mobile-menu-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--accent-primary);
+  transition: all 0.3s;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  .header-center {
+    display: none;
+  }
+
+  .mobile-menu-toggle {
+    display: flex;
+  }
+
+  #main-header.menu-open .header-center {
+    display: flex;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(18, 16, 15, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--panel-border);
+    padding: 1rem;
+  }
+
+  .nav-link {
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+}

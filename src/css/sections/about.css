@@ -1,0 +1,78 @@
+/* About Section */
+#about {
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 4rem;
+}
+
+.about-panel {
+  width: 400px;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Profile Photo */
+.profile-photo {
+  margin: 1.5rem 0;
+  display: flex;
+  justify-content: center;
+}
+
+.photo-placeholder {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--panel-highlight);
+  box-shadow: 0 0 20px rgba(255, 78, 66, 0.3);
+  transition: all 0.3s;
+}
+
+.photo-placeholder:hover {
+  box-shadow: 0 0 30px rgba(255, 78, 66, 0.6);
+  transform: scale(1.05);
+}
+
+.photo-placeholder span {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Bio Section */
+.bio-section {
+  margin: 1.5rem 0;
+}
+
+.bio-label {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.bio-text {
+  color: var(--text-primary);
+  font-size: 0.75rem;
+  line-height: 1.6;
+  text-transform: none;
+}
+
+/* Responsive About */
+@media (max-width: 768px) {
+  #about {
+    padding-left: 2rem;
+    justify-content: center;
+  }
+
+  .about-panel {
+    position: relative;
+    left: 0;
+    top: 0;
+    transform: none;
+    width: 100%;
+    max-width: 400px;
+  }
+}
