@@ -2,6 +2,7 @@
 import { LoadingScreen } from './js/ui/loading.js';
 import { Navigation } from './js/ui/navigation.js';
 import { Notification } from './js/ui/notification.js';
+import { CustomCursor } from './js/ui/cursor.js';
 import { ThreeScene } from './js/three/scene.js';
 import { Logo } from './js/three/logo.js';
 import { Particles } from './js/three/particles.js';
@@ -13,6 +14,7 @@ class PortfolioApp {
     this.loadingScreen = null;
     this.navigation = null;
     this.notification = null;
+    this.customCursor = null;
     this.threeScene = null;
     this.logo = null;
     this.particles = null;
@@ -38,6 +40,10 @@ class PortfolioApp {
     this.navigation.init();
 
     this.notification = new Notification();
+    
+    // Initialize custom cursor
+    this.customCursor = new CustomCursor();
+    this.customCursor.init();
 
     // Initialize Three.js scene
     this.initThreeJS();
