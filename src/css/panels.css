@@ -236,42 +236,7 @@
   margin-top: 1rem;
 }
 
-/* Form Elements */
-.form-group {
-  margin-bottom: 1rem;
-}
 
-.form-label {
-  display: block;
-  color: var(--text-secondary);
-  font-size: 0.75rem;
-  margin-bottom: 0.3125rem;
-}
-
-.terminal-input,
-.terminal-textarea {
-  width: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid var(--panel-border);
-  color: var(--text-primary);
-  padding: 0.5rem;
-  font-family: inherit;
-  font-size: 0.75rem;
-  border-radius: 3px;
-  transition: all 0.2s;
-}
-
-.terminal-input:focus,
-.terminal-textarea:focus {
-  outline: none;
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 10px rgba(255, 78, 66, 0.3);
-}
-
-.terminal-textarea {
-  resize: vertical;
-  min-height: 100px;
-}
 
 /* Social Buttons */
 .social-section {

@@ -1,15 +1,10 @@
-// Form handling and validation
-export class FormHandler {
+// Contact and button handling
+export class ContactHandler {
   constructor() {
-    this.form = document.getElementById('contact-form');
     this.terminalOutput = document.querySelector('.terminal-output');
   }
 
   init() {
-    if (this.form) {
-      this.form.addEventListener('submit', (e) => this.handleSubmit(e));
-    }
-
     // Add button click handlers
     this.setupButtonHandlers();
   }
@@ -25,81 +20,56 @@ export class FormHandler {
       });
     });
 
-    // Social buttons
+    // Contact links
+    document.querySelectorAll('.contact-link').forEach(button => {
+      button.addEventListener('click', () => {
+        const url = button.dataset.url;
+        if (url) {
+          this.handleContactClick(url);
+        }
+      });
+    });
+
+    // Social buttons (if any remain)
     document.querySelectorAll('.social-button').forEach(button => {
       button.addEventListener('click', () => {
         const url = button.dataset.url;
         if (url) {
-          if (url.startsWith('mailto:')) {
-            window.location.href = url;
-          } else {
-            window.open(url, '_blank');
-          }
+          this.handleContactClick(url);
         }
       });
     });
   }
 
-  async handleSubmit(e) {
-    e.preventDefault();
-
-    const formData = new FormData(this.form);
-    const data = Object.fromEntries(formData);
-
-    // Validate
-    if (!this.validate(data)) {
-      this.addTerminalMessage('> ERROR: INVALID INPUT DETECTED', true);
-      return;
+  handleContactClick(url) {
+    // Add terminal message for contact interaction
+    if (this.terminalOutput) {
+      this.addTerminalMessage('> INITIATING CONNECTION...');
     }
 
-    // Add transmitting message
-    this.addTerminalMessage('> TRANSMITTING MESSAGE...');
-
-    // Simulate sending (replace with actual backend/EmailJS)
-    await this.simulateSend(data);
-
-    // Success message
-    this.addTerminalMessage('> MESSAGE TRANSMITTED SUCCESSFULLY', false);
-    this.addTerminalMessage('> AWAITING RESPONSE...');
-
-    // Reset form
-    this.form.reset();
-
-    // Show notification
-    this.showNotification('MESSAGE SENT SUCCESSFULLY');
-  }
-
-  validate(data) {
-    if (!data.name || data.name.trim().length < 2) {
-      return false;
+    // Handle different contact methods
+    if (url.startsWith('mailto:')) {
+      window.location.href = url;
+      if (this.terminalOutput) {
+        this.addTerminalMessage('> EMAIL CLIENT OPENED');
+      }
+    } else if (url.startsWith('tel:')) {
+      window.location.href = url;
+      if (this.terminalOutput) {
+        this.addTerminalMessage('> DIALING NUMBER...');
+      }
+    } else {
+      window.open(url, '_blank');
+      if (this.terminalOutput) {
+        this.addTerminalMessage('> OPENING EXTERNAL LINK');
+      }
     }
 
-    if (!data.email || !this.isValidEmail(data.email)) {
-      return false;
-    }
-
-    if (!data.message || data.message.trim().length < 10) {
-      return false;
-    }
-
-    return true;
+    // Show success notification
+    this.showNotification('CONTACT METHOD ACTIVATED');
   }
 
-  isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  }
 
-  async simulateSend(data) {
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    // Log to console (replace with actual API call)
-    console.log('Form submission:', data);
-
-    // In a real implementation, you would send to a backend or use EmailJS:
-    // await emailjs.send('service_id', 'template_id', data);
-  }
 
   addTerminalMessage(message, isError = false) {
     const line = document.createElement('p');
