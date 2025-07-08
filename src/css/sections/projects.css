@@ -27,6 +27,11 @@
   left: 4rem;
 }
 
+.project-4 {
+  align-self: flex-end;
+  right: 4rem;
+}
+
 /* Project Screenshot */
 .project-screenshot {
   width: 100%;
