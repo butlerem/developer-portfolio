@@ -58,27 +58,32 @@ portfolio/
 ## Installation
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/yourusername/portfolio.git
 cd portfolio
 ```
 
 2. Install dependencies:
+
 ```bash
 npm install
 ```
 
 3. Start development server:
+
 ```bash
 npm run dev
 ```
 
 4. Build for production:
+
 ```bash
 npm run build
 ```
 
 5. Preview production build:
+
 ```bash
 npm run preview
 ```
@@ -128,11 +133,3 @@ MIT License - feel free to use this template for your own portfolio.
 - Design inspired by technical/sci-fi interfaces
 - Font: TheGoodMonolith (monospace)
 - Space background: assets.codepen.io
-
-## Contact
-
-Update the contact information in the HTML file with your own details.
-
----
-
-Built with ❤️ and Three.js
