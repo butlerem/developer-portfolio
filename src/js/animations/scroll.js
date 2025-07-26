@@ -35,17 +35,27 @@ export class ScrollAnimations {
   }
 
   setupScrollTracking() {
+    // Mobile detection for performance optimization
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
     let ticking = false;
+    let lastScrollTime = 0;
+    const throttleDelay = isMobile ? 32 : 16; // ~30fps instead of 60fps on mobile
 
-    window.addEventListener('scroll', () => {
+    const handleScroll = () => {
+      const now = performance.now();
+      if (now - lastScrollTime < throttleDelay) return;
+
       if (!ticking) {
         window.requestAnimationFrame(() => {
           this.handleScroll();
           ticking = false;
         });
         ticking = true;
+        lastScrollTime = now;
       }
-    });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
   }
 
   handleScroll() {

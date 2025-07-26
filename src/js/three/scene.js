@@ -10,6 +10,9 @@ export class ThreeScene {
     this.controls = null;
     this.clock = new THREE.Clock();
     this.scrollAmount = 0;
+    // Mobile detection for performance optimization
+    this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+    this.frameCount = 0;
   }
 
   init() {
@@ -40,12 +43,13 @@ export class ThreeScene {
 
   setupRenderer() {
     this.renderer = new THREE.WebGLRenderer({
-      antialias: true,
+      antialias: !this.isMobile, // Disable antialiasing on mobile for better performance
       alpha: true,
       powerPreference: 'high-performance'
     });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // More aggressive pixel ratio clamping for mobile
+    this.renderer.setPixelRatio(this.isMobile ? 1 : Math.min(window.devicePixelRatio, 2));
     this.container.appendChild(this.renderer.domElement);
   }
 
@@ -97,6 +101,13 @@ export class ThreeScene {
 
   animate(callback) {
     requestAnimationFrame(() => this.animate(callback));
+
+    // Skip frames on mobile for better performance (30fps instead of 60fps)
+    if (this.isMobile && this.frameCount % 2 === 0) {
+      this.frameCount++;
+      return;
+    }
+    this.frameCount++;
 
     const delta = this.clock.getDelta();
     const elapsed = this.clock.getElapsedTime();
