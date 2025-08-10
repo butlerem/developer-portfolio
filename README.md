@@ -130,6 +130,5 @@ MIT License - feel free to use this template for your own portfolio.
 
 ## Credits
 
-- Design inspired by technical/sci-fi interfaces
 - Font: TheGoodMonolith (monospace)
 - Space background: assets.codepen.io
