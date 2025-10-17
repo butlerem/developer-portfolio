@@ -6,6 +6,7 @@ PORTFOLIO_PROJECT_PLAN.md
 node_modules/
 .pnp
 .pnp.js
+.claude
 
 # Build output
 dist/
