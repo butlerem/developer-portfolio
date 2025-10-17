@@ -19,6 +19,21 @@
   justify-content: center;
 }
 
+.profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 2px solid var(--accent-primary);
+  object-fit: cover;
+  box-shadow: 0 0 20px rgba(255, 78, 66, 0.3);
+  transition: all 0.3s;
+}
+
+.profile-image:hover {
+  box-shadow: 0 0 30px rgba(255, 78, 66, 0.6);
+  transform: scale(1.05);
+}
+
 .photo-placeholder {
   width: 150px;
   height: 150px;
