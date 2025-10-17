@@ -383,38 +383,48 @@
         <div class="panel-content">
 
           <div class="terminal-output">
-            <p class="terminal-line">&gt; SYSTEM READY TO RECEIVE MESSAGE...</p>
             <p class="terminal-line">&gt; CONNECTION ESTABLISHED</p>
+            <p class="terminal-line">&gt; AVAILABLE COMMUNICATION CHANNELS:</p>
             <p class="terminal-line">&nbsp;</p>
           </div>
 
-          <form id="contact-form">
-            <div class="form-group">
-              <label class="form-label">&gt; NAME:</label>
-              <input type="text" class="terminal-input" name="name" required>
+          <div class="contact-methods">
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <div class="contact-info">
+                <span class="contact-label">EMAIL:</span>
+                <button class="contact-link" data-url="mailto:butlerem01@gmail.com">BUTLEREM01@GMAIL.COM</button>
+              </div>
             </div>
 
-            <div class="form-group">
-              <label class="form-label">&gt; EMAIL:</label>
-              <input type="email" class="terminal-input" name="email" required>
+            <div class="contact-item">
+              <div class="contact-icon">📞</div>
+              <div class="contact-info">
+                <span class="contact-label">PHONE:</span>
+                <button class="contact-link" data-url="tel:+19028189930">+1 (902) 818-9930</button>
+              </div>
             </div>
 
-            <div class="form-group">
-              <label class="form-label">&gt; MESSAGE:</label>
-              <textarea class="terminal-textarea" name="message" rows="5" required></textarea>
+            <div class="contact-item">
+              <div class="contact-icon">💼</div>
+              <div class="contact-info">
+                <span class="contact-label">LINKEDIN:</span>
+                <button class="contact-link" data-url="https://linkedin.com/in/emmajanebutler">EMMAJANEBUTLER</button>
+              </div>
             </div>
 
-            <button type="submit" class="project-button submit-button">SEND MESSAGE ▸</button>
-          </form>
-
-          <div class="social-section">
-            <p class="terminal-line">&gt; ALTERNATIVE CONTACT METHODS:</p>
-            <div class="social-buttons">
-              <button class="social-button" data-url="https://github.com/butlerem">GITHUB</button>
-              <button class="social-button" data-url="https://linkedin.com/in/emmajanebutler">LINKEDIN</button>
-              <button class="social-button" data-url="tel:+19028189930">PHONE</button>
-              <button class="social-button" data-url="mailto:butlerem01@gmail.com">EMAIL</button>
+            <div class="contact-item">
+              <div class="contact-icon">🔧</div>
+              <div class="contact-info">
+                <span class="contact-label">GITHUB:</span>
+                <button class="contact-link" data-url="https://github.com/butlerem">BUTLEREM</button>
+              </div>
             </div>
+          </div>
+
+          <div class="terminal-footer">
+            <p class="terminal-line">&gt; CLICK ANY LINK TO INITIATE CONTACT</p>
+            <p class="terminal-line">&gt; STATUS: READY TO CONNECT</p>
           </div>
 
         </div>

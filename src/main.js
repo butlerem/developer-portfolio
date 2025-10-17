@@ -7,7 +7,7 @@ import { ThreeScene } from './js/three/scene.js';
 import { Logo } from './js/three/logo.js';
 import { Particles } from './js/three/particles.js';
 import { ScrollAnimations } from './js/animations/scroll.js';
-import { FormHandler } from './js/utils/form.js';
+import { ContactHandler } from './js/utils/form.js';
 
 class PortfolioApp {
   constructor() {
@@ -19,7 +19,7 @@ class PortfolioApp {
     this.logo = null;
     this.particles = null;
     this.scrollAnimations = null;
-    this.formHandler = null;
+    this.contactHandler = null;
     this.scrollAmount = 0;
   }
 
@@ -52,9 +52,9 @@ class PortfolioApp {
     this.scrollAnimations = new ScrollAnimations();
     this.scrollAnimations.init();
 
-    // Initialize form handler
-    this.formHandler = new FormHandler();
-    this.formHandler.init();
+    // Initialize contact handler
+    this.contactHandler = new ContactHandler();
+    this.contactHandler.init();
 
     // Setup scroll tracking for Three.js
     this.setupScrollTracking();
