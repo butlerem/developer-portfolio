@@ -1,0 +1,238 @@
+/* Custom Sci-Fi Cursor */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: opacity 0.3s ease;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--accent-primary);
+  border-radius: 50%;
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  box-shadow: 0 0 10px var(--accent-primary);
+  animation: cursor-pulse 2s infinite;
+}
+
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--accent-primary);
+  border-radius: 50%;
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  opacity: 0.6;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-style: dashed;
+  animation: cursor-rotate 4s linear infinite;
+}
+
+.cursor-scan-lines {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  border-radius: 50%;
+  background: 
+    linear-gradient(0deg, transparent 48%, var(--accent-primary) 49%, var(--accent-primary) 51%, transparent 52%),
+    linear-gradient(90deg, transparent 48%, var(--accent-primary) 49%, var(--accent-primary) 51%, transparent 52%);
+  opacity: 0.3;
+  animation: cursor-scan 1.5s ease-in-out infinite alternate;
+}
+
+.cursor-trail {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    rgba(255, 78, 66, 0.1) 0%, 
+    rgba(255, 78, 66, 0.05) 50%, 
+    transparent 70%);
+  opacity: 0.6;
+  animation: cursor-trail-pulse 3s ease-in-out infinite;
+}
+
+/* Hover State - Interactive Elements */
+.custom-cursor.hovering .cursor-dot {
+  width: 12px;
+  height: 12px;
+  top: -6px;
+  left: -6px;
+  background: var(--status-warning);
+  box-shadow: 0 0 20px var(--status-warning);
+}
+
+.custom-cursor.hovering .cursor-ring {
+  width: 48px;
+  height: 48px;
+  top: -24px;
+  left: -24px;
+  border-color: var(--status-warning);
+  border-style: solid;
+  opacity: 0.8;
+  animation: cursor-rotate 2s linear infinite;
+}
+
+.custom-cursor.hovering .cursor-scan-lines {
+  width: 56px;
+  height: 56px;
+  top: -28px;
+  left: -28px;
+  background: 
+    linear-gradient(0deg, transparent 48%, var(--status-warning) 49%, var(--status-warning) 51%, transparent 52%),
+    linear-gradient(90deg, transparent 48%, var(--status-warning) 49%, var(--status-warning) 51%, transparent 52%);
+  opacity: 0.6;
+  animation: cursor-scan 0.8s ease-in-out infinite alternate;
+}
+
+.custom-cursor.hovering .cursor-trail {
+  width: 80px;
+  height: 80px;
+  top: -40px;
+  left: -40px;
+  background: radial-gradient(circle, 
+    rgba(255, 174, 0, 0.15) 0%, 
+    rgba(255, 174, 0, 0.08) 50%, 
+    transparent 70%);
+  animation: cursor-trail-pulse 1.5s ease-in-out infinite;
+}
+
+/* Click State */
+.custom-cursor.clicking .cursor-dot {
+  width: 16px;
+  height: 16px;
+  top: -8px;
+  left: -8px;
+  background: var(--status-critical);
+  box-shadow: 0 0 25px var(--status-critical);
+}
+
+.custom-cursor.clicking .cursor-ring {
+  width: 24px;
+  height: 24px;
+  top: -12px;
+  left: -12px;
+  border-color: var(--status-critical);
+  border-width: 3px;
+  animation: cursor-click-pulse 0.3s ease-out;
+}
+
+.custom-cursor.clicking .cursor-scan-lines {
+  opacity: 1;
+  animation: cursor-click-scan 0.3s ease-out;
+}
+
+/* Keyframe Animations */
+@keyframes cursor-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.8;
+  }
+}
+
+@keyframes cursor-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes cursor-scan {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(1.1) rotate(180deg);
+    opacity: 0.6;
+  }
+}
+
+@keyframes cursor-click-pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes cursor-click-scan {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(1.3) rotate(45deg);
+    opacity: 1;
+  }
+}
+
+@keyframes cursor-trail-pulse {
+  0%, 100% {
+    transform: scale(0.8);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+/* Hide cursor on mobile devices */
+@media (max-width: 768px) {
+  .custom-cursor {
+    display: none;
+  }
+}
+
+/* Remove default cursor from interactive elements */
+body, 
+a, 
+button, 
+.project-button, 
+.social-button, 
+.nav-link, 
+.skill-bar, 
+.drag-handle,
+.panel,
+.draggable,
+.tech-pill,
+.project-screenshot {
+  cursor: none !important;
+}
+
+/* Override for elements that need text cursor */
+input[type="text"], 
+input[type="email"], 
+textarea {
+  cursor: text !important;
+}
+
+/* Show default cursor on elements that shouldn't use custom cursor */
+iframe, 
+object, 
+embed {
+  cursor: default !important;
+}
