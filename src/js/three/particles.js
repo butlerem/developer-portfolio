@@ -5,6 +5,8 @@ export class Particles {
     this.scene = scene;
     this.points = null;
     this.domParticles = [];
+    // Mobile detection for performance optimization
+    this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
   }
 
   init() {
@@ -14,7 +16,8 @@ export class Particles {
 
   // Three.js background particles
   createThreeJSParticles() {
-    const particleCount = 3000;
+    // Reduce particle count by 50% on mobile for better performance
+    const particleCount = this.isMobile ? 1500 : 3000;
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
 
@@ -86,7 +89,8 @@ export class Particles {
   // DOM-based floating particles
   createDOMParticles() {
     const container = document.getElementById('particles-container');
-    const particleCount = 1000;
+    // Reduce DOM particles by 70% on mobile for better performance
+    const particleCount = this.isMobile ? 300 : 1000;
     const centerX = window.innerWidth / 2;
     const centerY = window.innerHeight / 2;
     const minDistance = 200; // Hollow center
